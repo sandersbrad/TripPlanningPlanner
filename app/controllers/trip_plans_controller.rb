@@ -69,6 +69,6 @@ class TripPlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_plan_params
-      params[:trip_plan]
+      params.require(:trip_plan).permit(:title, :image_url)
     end
 end

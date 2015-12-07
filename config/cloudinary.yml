@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dwhvrflyu
+  api_key: '233488532584141'
+  api_secret: Y7gW-ed4jgnDHl8ZBdZpZXDNqww
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dwhvrflyu
+  api_key: '233488532584141'
+  api_secret: Y7gW-ed4jgnDHl8ZBdZpZXDNqww
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dwhvrflyu
+  api_key: '233488532584141'
+  api_secret: Y7gW-ed4jgnDHl8ZBdZpZXDNqww
+  enhance_image_tag: true
+  static_image_support: false

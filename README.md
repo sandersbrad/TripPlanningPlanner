@@ -1,5 +1,7 @@
 #Trip Planning Planner
 
+Plan your next trip using the handy Trip Planning Planner!!
+
 ##Features
 
 * Image upload via cloudinary

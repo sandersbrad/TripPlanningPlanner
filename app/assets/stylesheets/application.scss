@@ -38,8 +38,22 @@ body {
   font-size: 30px;
 }
 
+#notice {
+  color: blue;
+  text-align: center;
+}
+
 #show-image {
   object-fit: cover;
+  height: 320px;
+  width: 320px;
+}
+
+.trip-plan-no-image {
+  background-color: white;
+  background-size: cover;
+  padding-right: 10px;
+  display: table-cell;
   height: 320px;
   width: 320px;
 }
@@ -108,6 +122,7 @@ a:hover {
   color: white;
   font-size: 14pt;
   padding: 7px;
+  display: flex;
   }
 
 .background {

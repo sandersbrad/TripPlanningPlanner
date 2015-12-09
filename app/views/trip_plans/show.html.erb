@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
+<div class='col-md-4' id='show-photo'>
+  <% if !@trip_plan.image_url %>
+    <div class='trip-plan-no-image'>
+    </div>
+  <% else %>
+    <img src='http://res.cloudinary.com/dwhvrflyu/<%= @trip_plan.image_url %>'
+         id='show-image'>
+  <% end %>
 
-<div class='col-md-4' id='show-photo'><img src='http://res.cloudinary.com/dwhvrflyu/<%= @trip_plan.image_url %>'
-                           id='show-image'>
   <div class='row btns'>
     <span class='btn btn-primary show-btn' id='edit'>Edit</span>
     <span class='btn btn-primary show-btn' id='save'>Save</span>

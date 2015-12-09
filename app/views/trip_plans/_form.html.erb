@@ -6,6 +6,9 @@
     </div>
 
       <div class="modal-body">
+        <% if flash[:notice] %>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
         <% @trip_plan = TripPlan.new %>
         <%= form_for(@trip_plan) do |f| %>
           <% if @trip_plan.errors.any? %>
@@ -25,7 +28,7 @@
           </br>
           <b>My Trip Plan's Photo</b>
           <%= f.cl_image_upload(:image_url,
-                                :crop => :limit, :width => 300, :height => 300) %>
+                                :crop => :limit, :width => 360, :height => 360) %>
           </br>
           <span class='preview'></span>
       </div>
@@ -39,6 +42,9 @@
 </div>
 
 <script>
+  $('.cloudinary-fileupload').click(function () {
+    cloudinary.openUploadWidget()
+  });
   $('.cloudinary-fileupload').bind('fileuploadstart', function() {
     $('#create-plan').attr('disabled', true).addClass('hide')
     $('.spinner').removeClass('hide')

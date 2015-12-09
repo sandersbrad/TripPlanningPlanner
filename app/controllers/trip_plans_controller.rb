@@ -34,7 +34,8 @@ class TripPlansController < ApplicationController
         format.html { redirect_to @trip_plan, notice: 'Trip plan was successfully created.' }
         format.json { render :show, status: :created, location: @trip_plan }
       else
-        format.html { render :new }
+        flash.now[:notice] = "Must have a name"
+        format.html { redirect_to trip_plans_path, notice: "Trip must have a name" }
         format.json { render json: @trip_plan.errors, status: :unprocessable_entity }
       end
     end

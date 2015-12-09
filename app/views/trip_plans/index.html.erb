@@ -2,10 +2,16 @@
 
 <% @trip_plans.each do |trip_plan| %>
   <a href='<%= trip_plan_path(trip_plan) %>'>
+    <% if !trip_plan.image_url %>
+      <div class='trip-plan-index-item'
+           style='background-color: white;
+                  background-size: cover'>
+    <% else %>
 
-    <div class='trip-plan-index-item'
-         style='background-image: URL(http://res.cloudinary.com/dwhvrflyu/<%= trip_plan.image_url %>);
-                background-size: cover'>
+      <div class='trip-plan-index-item'
+           style='background-image: URL(http://res.cloudinary.com/dwhvrflyu/<%= trip_plan.image_url %>);
+                  background-size: cover'>
+    <% end %>
 
         <span class='trip-title'><%=trip_plan.title%></span>
     </div>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% @trip_plans.each do |trip_plan| %>
+<% @trip_plans.reverse.each do |trip_plan| %>
   <a href='<%= trip_plan_path(trip_plan) %>'>
     <% if !trip_plan.image_url %>
       <div class='trip-plan-index-item'

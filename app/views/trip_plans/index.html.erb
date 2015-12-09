@@ -1,25 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Trip Plans</h1>
+<% @trip_plans.each do |trip_plan| %>
+  <a href='<%= trip_plan_path(trip_plan) %>'>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class='trip-plan-index-item'
+         style='background-image: URL(http://res.cloudinary.com/dwhvrflyu/<%= trip_plan.image_url %>);
+                background-size: cover'>
 
-  <tbody>
-    <% @trip_plans.each do |trip_plan| %>
-      <tr>
-        <td><%= link_to 'Show', trip_plan %></td>
-        <td><%= link_to 'Edit', edit_trip_plan_path(trip_plan) %></td>
-        <td><%= link_to 'Destroy', trip_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <span class='trip-title'><%=trip_plan.title%></span>
+    </div>
+ </a>
 
+<% end %>
 <br>
-
-<%= link_to 'New Trip plan', new_trip_plan_path %>

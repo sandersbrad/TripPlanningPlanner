@@ -20,6 +20,9 @@
             </div>
           <% end %>
           <%= f.text_field :title, placeholder: 'Example: San Francisco Trip' %>
+          <%= f.cl_image_upload(:image_url,
+                                :crop => :limit, :width => 300, :height => 300) %>
+          <span class='preview'></span>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary" id='create-plan'>Create</button>
@@ -29,3 +32,15 @@
     </form>
   </div>
 </div>
+
+<script>
+  $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
+    $('.preview').html(
+      $.cloudinary.image(data.result.public_id,
+        { format: data.result.format, version: data.result.version,
+          crop: 'fill', width: 150, height: 100 })
+    );
+    $('.image_public_id').val(data.result.public_id);
+    return true;
+  });
+</script>

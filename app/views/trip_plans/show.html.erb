@@ -1,4 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_trip_plan_path(@trip_plan) %> |
-<%= link_to 'Back', trip_plans_path %>
+<div class='col-md-4' id='show-photo'><img src='http://res.cloudinary.com/dwhvrflyu/<%= @trip_plan.image_url %>'
+                           id='show-image'>
+  <span class='btn btn-primary show-btn' id='edit'>Edit</span>
+  <span class='btn btn-primary show-btn' id='save'>Save</span>
+  <%= link_to 'All Plans', trip_plans_path, class: 'btn btn-primary show-btn' %>
+</div>
+<div class='col-md-8' id='show-info'>
+  <span id='trip-show-title'><%= @trip_plan.title %></span>
+  <div id='show-body'>
+    <% if @body %>
+      <%= @body.html_safe %>
+    <% end %>
+  </div>
+  <div>
+    <textarea name='body' id='edit-body' rows='20' cols='100'><%=@trip_plan.body%></textarea>
+  </div>
+</div>
+
+<script>
+  $('#edit').click(function () {
+    $('#show-body').css('display', 'none')
+    $('#edit-body').css('display', 'block')
+    $('#edit').css('display', 'none')
+    $('#save').css('display', 'inline-block')
+  });
+
+  $('#save').click(function () {
+    var text = $('#edit-body').val()
+    $.ajax({
+      url: '<%= trip_plan_path %>',
+      method: 'PUT',
+      data: {'trip_plan':{ 'body': text }},
+      dataType: 'json',
+      success: function () {
+        location.reload();
+      }
+  })
+    // $('#edit').css('display', 'inline-block')
+    // $('#save').css('display', 'none')
+    // $('#show-body').css('display', 'block')
+    // $('#edit-body').css('display', 'none')
+  })
+</script>

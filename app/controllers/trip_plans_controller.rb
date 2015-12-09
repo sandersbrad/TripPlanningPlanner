@@ -10,6 +10,9 @@ class TripPlansController < ApplicationController
   # GET /trip_plans/1
   # GET /trip_plans/1.json
   def show
+    if @trip_plan.body
+      @body = Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(@trip_plan.body)
+    end
   end
 
   # GET /trip_plans/new
@@ -69,6 +72,6 @@ class TripPlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_plan_params
-      params.require(:trip_plan).permit(:title, :image_url)
+      params.require(:trip_plan).permit(:title, :image_url, :body)
     end
 end

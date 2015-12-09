@@ -14,4 +14,10 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <%= link_to trip_plan.title, trip_plan %>
+  <%= link_to 'Edit', edit_trip_plan_path(trip_plan) %>
+  <%= link_to 'Destroy', trip_plan, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'New Trip plan', new_trip_plan_path %>
+
 <% end %>

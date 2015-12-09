@@ -5,21 +5,30 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <%= cloudinary_js_config %>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class='col-md-1'></div>
-  <div class='col-md-5'>
-    <h3> Trip Plans </h3>
-  </div>
-  <div class='col-md-5'>
-    <button class='btn btn-primary add'
-            data-toggle='modal'
-            data-target='#new_plan'><span class='glyphicon glyphicon-plus'></span> Add Trip Plan</button>
+  <div class='col-md-10'>
+    <div class='col-md-4'>
+      <h3 id='title'> Trip Planning Planner </h3>
+    </div>
+    <div class='col-md-4'></div>
+    <div class='col-md-4'>
+      <button class='btn btn-primary add'
+              data-toggle='modal'
+              data-target='#new_plan'><span class='glyphicon glyphicon-plus'>
+                </span> Add Trip Plan
+      </button>
+    </div>
   </div>
   <div class='col-md-1'></div>
 </nav>
-<%= yield %>
+
+<div id='content'>
+  <%= yield %>
+</div>
 
   <div class="modal fade" id="new_plan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <!-- <div class="modal-dialog" role="document">

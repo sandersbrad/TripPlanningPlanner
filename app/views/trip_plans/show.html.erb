@@ -2,9 +2,14 @@
 
 <div class='col-md-4' id='show-photo'><img src='http://res.cloudinary.com/dwhvrflyu/<%= @trip_plan.image_url %>'
                            id='show-image'>
-  <span class='btn btn-primary show-btn' id='edit'>Edit</span>
-  <span class='btn btn-primary show-btn' id='save'>Save</span>
-  <%= link_to 'All Plans', trip_plans_path, class: 'btn btn-primary show-btn' %>
+  <div class='row btns'>
+    <span class='btn btn-primary show-btn' id='edit'>Edit</span>
+    <span class='btn btn-primary show-btn' id='save'>Save</span>
+    <%= link_to 'All Plans', trip_plans_path, class: 'btn btn-primary show-btn' %></br>
+  </div>
+  <div class='row btns'>
+    <%= button_to 'Delete', trip_plan_path, method: :delete, class: 'btn btn-danger show-btn', data: { confirm: 'Are you sure?' } %>
+  </div>
 </div>
 <div class='col-md-8' id='show-info'>
   <span id='trip-show-title'><%= @trip_plan.title %></span>
@@ -14,7 +19,7 @@
     <% end %>
   </div>
   <div>
-    <textarea name='body' id='edit-body' rows='20' cols='100'><%=@trip_plan.body%></textarea>
+    <textarea name='body' id='edit-body' rows='20' cols='91'><%=@trip_plan.body%></textarea>
   </div>
 </div>
 

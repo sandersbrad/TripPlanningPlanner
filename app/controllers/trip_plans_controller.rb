@@ -43,8 +43,10 @@ class TripPlansController < ApplicationController
   # PATCH/PUT /trip_plans/1
   # PATCH/PUT /trip_plans/1.json
   def update
+    @body = trip_plan_params[:body]
+
     respond_to do |format|
-      if @trip_plan.update(trip_plan_params)
+      if @trip_plan.update({body: CGI::escapeHTML(@body)})
         format.html { redirect_to @trip_plan, notice: 'Trip plan was successfully updated.' }
         format.json { render :show, status: :ok, location: @trip_plan }
       else

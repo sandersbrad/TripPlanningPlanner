@@ -23,6 +23,7 @@ html {
 
 body {
   padding-top: 60px;
+  background-color: rgb(239, 239, 239);
 }
 
 .trip-plan-index-item {
@@ -48,11 +49,33 @@ body {
   margin: 10px 0px;
 }
 
+.navbar {
+  background-color: white;
+  box-shadow: 0 0 3px 0 #262626;
+}
+
 .btn.show-btn {
   float: right;
   display: block;
   margin: 10px 0 0 10px;
   color: white;
+}
+
+.row.btns {
+  padding-right: 10px;
+}
+
+a:hover {
+  background-color: rgb(239, 239, 239);
+  color: rgb(239, 239, 239);
+}
+
+.hide {
+  display: none;
+}
+
+.trip-title-input {
+  width: 100%
 }
 
 #content {
@@ -67,7 +90,7 @@ body {
 
 #show-info {
   height: 100vh;
-  border-left: 1px solid black;
+  border-left: 1px solid #A3A3A3;
 }
 
 #edit-body {

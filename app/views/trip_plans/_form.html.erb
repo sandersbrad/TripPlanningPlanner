@@ -19,14 +19,19 @@
               </ul>
             </div>
           <% end %>
-          <%= f.text_field :title, placeholder: 'Example: San Francisco Trip' %>
+          <b>Name</b>
+          <%= f.text_field :title, placeholder: 'Example: San Francisco Trip', class: 'trip-title-input' %>
+          </br>
+          </br>
+          <b>My Trip Plan's Photo</b>
           <%= f.cl_image_upload(:image_url,
                                 :crop => :limit, :width => 300, :height => 300) %>
+          </br>
           <span class='preview'></span>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary" id='create-plan'>Create</button>
-        <%= f.submit %>
+        <img class='spinner hide' src='http://res.cloudinary.com/dwhvrflyu/image/upload/v1446231333/default_emiuvy.gif'>
         <% end %>
       </div>
     </form>
@@ -34,13 +39,20 @@
 </div>
 
 <script>
+  $('.cloudinary-fileupload').bind('fileuploadstart', function() {
+    $('#create-plan').attr('disabled', true).addClass('hide')
+    $('.spinner').removeClass('hide')
+  });
   $('.cloudinary-fileupload').bind('cloudinarydone', function(e, data) {
     $('.preview').html(
       $.cloudinary.image(data.result.public_id,
         { format: data.result.format, version: data.result.version,
           crop: 'fill', width: 150, height: 100 })
     );
+    $('#create-plan').attr('disabled', false).removeClass('hide')
+    $('.spinner').addClass('hide')
     $('.image_public_id').val(data.result.public_id);
     return true;
   });
+  $('.cloudinary-fileupload').cloudinary_fileupload({replaceFileInput: false})
 </script>

@@ -6,9 +6,6 @@
     </div>
 
       <div class="modal-body">
-        <% if flash[:notice] %>
-          <div class="notice"><%= flash[:notice] %></div>
-        <% end %>
         <% @trip_plan = TripPlan.new %>
         <%= form_for(@trip_plan) do |f| %>
           <% if @trip_plan.errors.any? %>
